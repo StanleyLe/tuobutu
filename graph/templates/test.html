@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Qunee</title>
+    <link rel=stylesheet href=../static/bootstrap.css>
+    <link rel=stylesheet href=../static/graph.editor.css>
+</head>
+<body class="layout">
+<div style="z-index:999;position: fixed">
+    <button id="export_" style="margin-bottom: 20px;">
+    保存
+</button>
+</div>
+
+<div id="editor" data-options="region:'center'"></div>
+
+
+<script src="../static/js.js"></script>
+<script src="../static/qunee-min.js?v=1.8"></script>
+<script src="../static/graph.editor.js"></script>
+<script src="../static/SVGicon.js"></script>
+<script>
+
+
+    $('#editor').graphEditor({callback: function(editor){
+        var graph = editor.graph;
+// var hello = graph.createNode("Hello", -100, -50);
+//         hello.image = Q.Graphs.server;
+//         var qunee = graph.createNode("Qunee", 100, 50);
+//         var edge = graph.createEdge("Hello\nQunee", hello, qunee);
+//         graph.moveToCenter();
+        // 点击事件获取json数据
+   $('#export_').click(function () {
+        console.log(123)
+            var data = graph.exportJSON()
+            console.log(data)
+       $.ajax({
+           url: '/index',
+           method: 'GET',
+            data: {
+               'test': JSON.stringify(data)
+            },
+           success: function (res) {
+               if(res.code===201){
+                   alert('成功！')
+               }
+           }
+       })
+        })
+
+
+    }, data: {{test | safe }}});
+
+
+</script>
+</body>
+</html>
