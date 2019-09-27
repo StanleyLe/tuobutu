@@ -1033,11 +1033,6 @@ lang = lang.toLowerCase(), Q.Graph.prototype.copy = function () {
                 properties: {enableSubNetwork: !0}
             }], s = [{
                 prefix: "Q-",
-                name: "basic.nodes",
-                displayName: getI18NString("Basic Nodes"),
-                images: a
-            }, {
-                prefix: "Q-",
                 name: "register.images",
                 displayName: getI18NString("Register Images"),
                 images: t.getAllImages(),
